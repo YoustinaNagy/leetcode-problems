@@ -1,0 +1,25 @@
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        boolean negative = false ;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]<0){
+                negative = true ;
+            }
+            nums[i]= (int) Math.pow(nums[i], 2);
+        }
+        if(negative == true){
+            int temp ;
+            for(int i=0;i<nums.length;i++){
+                for(int y=i+1;y<nums.length;y++){
+                    if(nums[i]>nums[y]){
+                        temp = nums[y];
+                        nums[y]=nums[i];
+                        nums[i]=temp;
+                    }
+                }
+                // [16,1,0,9,100]
+            }
+        }
+        return nums;
+    }
+}
