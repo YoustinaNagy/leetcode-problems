@@ -1,0 +1,19 @@
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        for(int i=0 ; i<nums.length ;i++){
+            int end = nums.length;
+            if (i+k+1 < end){
+                end= i+k+1;
+            }
+
+            for(int j=i+1 ; j<end ; j++){
+                if(nums[i]==nums[j]){
+                    return true;
+                }
+
+            }
+        }
+        return false;
+        
+    }
+}
