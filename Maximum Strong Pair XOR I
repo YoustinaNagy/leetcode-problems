@@ -1,0 +1,13 @@
+class Solution {
+    public int maximumStrongPairXor(int[] nums) {
+        int max =0;
+        for(int i=0; i<nums.length ;i++){
+            for(int y=0 ; y<nums.length ;y++){
+                if(Math.abs(nums[i]-nums[y])<= Math.min(nums[i], nums[y])){
+                    max = Math.max(max,(nums[i]^nums[y]));
+                }
+            }
+        }
+        return max;
+    }
+}
