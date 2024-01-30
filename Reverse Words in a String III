@@ -1,0 +1,12 @@
+class Solution {
+    public String reverseWords(String s) {
+        String[] splits = s.split(" ");
+        String[] splitsReversed = new String[splits.length];
+        //This regEx splits the String on the WhiteSpaces 
+        for(int i = 0; i < splits.length; i++) {
+            splitsReversed[i] = new StringBuilder(splits[i]).reverse().toString();
+        }
+        String reversedWords = String.join(" ", splitsReversed);
+        return reversedWords ;
+    }
+}
