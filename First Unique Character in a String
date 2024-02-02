@@ -1,0 +1,22 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        Set<Character> set = new HashSet<>();
+        Set<Character> main = new HashSet<>();
+        int i=0;
+        for(char c:s.toCharArray()){
+            if (main.contains(c)){
+                set.add(c);
+            }else{
+                main.add(c);
+            }
+            if (set.size() >= 26) return -1;
+            i++;
+        }
+        for (int j =0 ; j<s.length() ; j++){
+            if(set.contains(s.charAt(j))==false){
+                return j;
+            }
+        } 
+        return -1;       
+    }
+}
