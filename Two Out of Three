@@ -1,0 +1,26 @@
+class Solution {
+    Map<Integer,Integer> map = new HashMap<>();
+    public void addMap (int[] nums){
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums){
+            if(map.containsKey(num) && set.contains(num)==false){
+                map.put(num, map.get(num)+1);
+            }else{
+                map.put(num,1);
+                set.add(num);
+            }
+        }
+    }
+    public List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
+        List<Integer> list = new ArrayList<>();
+        addMap (nums1);
+        addMap (nums2);
+        addMap (nums3);
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()) {
+            if(entry.getValue()>=2){
+                list.add(entry.getKey());
+            }
+        }
+        return list;
+    }
+}
