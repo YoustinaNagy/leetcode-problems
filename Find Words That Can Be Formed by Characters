@@ -1,0 +1,26 @@
+class Solution {
+    public int countCharacters(String[] words, String chars) {
+        int[] count = new int[26];
+        for(int i =0; i<chars.length();i++){
+            count[chars.charAt(i)-'a']++;
+        }
+        int result =0;
+        for(String word:words){
+            if(forming(word,count)== true){
+                result = result+word.length();
+            }
+        }
+        return result;
+    }
+    public boolean forming(String word , int[] count){
+        int[] count2 = new int [26];
+        for(int i=0 ; i<word.length() ; i++){
+            int y = word.charAt(i)-'a';
+            count2[y]++;
+            if(count2[y]>count[y]){
+                return false;
+            }
+        }
+        return true ;
+    }
+}
