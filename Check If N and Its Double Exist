@@ -1,0 +1,15 @@
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+        Set<Integer> set = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for(int i: arr){
+            if(set.contains(i)||set2.contains(i)){
+                return true;
+            }else if(i%2==0){
+                set.add(i/2);
+            }
+            set2.add(i*2);
+        }
+     return false;   
+    }
+}
