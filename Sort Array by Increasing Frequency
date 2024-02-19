@@ -1,0 +1,47 @@
+class Solution {
+    public int[] frequencySort(int[] nums) {
+        if(nums.length<3){
+            return nums;
+        }
+        Map <Integer,Integer> map = new HashMap<>();
+        int[] result = new int[nums.length];
+        for(int i :nums){
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        int[] freq = new int[map.size()];
+        int[] num = new int[map.size()];
+        int z=0;
+        for(int key:map.keySet()){
+            num[z]=key;
+            freq[z]=map.get(key);
+            z++;
+        }
+        System.out.println(map);
+        for(int i=0; i<freq.length ;i++){
+            for(int j =i+1 ; j<freq.length ; j++){
+                if(freq[j]<freq[i]){
+                    int temp = freq[i];
+                    freq[i]=freq[j];
+                    freq[j]= temp;
+
+                    int temp2 = num[i];
+                    num[i]=num[j];
+                    num[j]= temp2;
+                }
+                if(freq[j]==freq[i]&&num[j]>num[i]){
+                    int temp2 = num[i];
+                    num[i]=num[j];
+                    num[j]= temp2;
+                }
+            }
+        }
+        int count =0;
+        for(int i=0 ; i<freq.length ;i++){
+            for (int j=0; j<freq[i] ;j++){
+                result[count]=num[i];
+                count++;
+            }
+        }
+        return result;
+    }
+}
