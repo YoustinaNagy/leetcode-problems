@@ -1,0 +1,28 @@
+class Solution {
+    private String getValue(StringBuilder sb) {
+        String value = sb.toString();
+        int i = 0;
+        while(i < value.length() && value.charAt(i) =='0') i++; 
+        if (i == value.length()) return "0";
+        return value.substring(i, value.length());
+    }
+    public int numDifferentIntegers(String word) {
+        Set<String> set = new HashSet<>();
+        StringBuilder sb = new StringBuilder();
+        for(int i =0; i<word.length() ;i++){
+            Boolean flag = Character.isDigit(word.charAt(i));
+            if(flag) {
+                sb.append(word.charAt(i));
+            } else  {
+                if(sb.length()>0){
+                    set.add(getValue(sb));
+                }
+                sb.setLength(0);
+            }
+        }
+        if(sb.length()>0){
+            set.add(getValue(sb));
+        }
+        return set.size();
+    }
+}
