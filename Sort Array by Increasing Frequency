@@ -43,5 +43,34 @@ class Solution {
             }
         }
         return result;
+
+other solution
+
+ Map<Integer, Integer> map = new HashMap<>();
+        for(var num: nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        int[][] lst = new int[map.keySet().size()][2];
+        int i = 0;
+        for(var key: map.keySet()) {
+            lst[i][0] = key;
+            lst[i][1] = map.get(key);
+            i += 1;
+        }
+        Arrays.sort(lst, (a, b) -> { // a -> [3,2] , b -> [1,1]
+            if (Integer.compare(a[1], b[1]) == 0) {
+                return Integer.compare(b[0], a[0]);
+            }
+            return Integer.compare(a[1], b[1]);
+        });
+        int[] res = new int[nums.length];
+        int j = 0;
+        for(var element: lst) {
+            for(int k = 0; k < element[1]; k++) {
+                res[j] = element[0];
+                j += 1;
+            }
+        }
+        return res;
     }
 }
